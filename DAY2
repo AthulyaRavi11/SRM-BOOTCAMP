@@ -1,0 +1,42 @@
+lc -125
+
+
+class Solution {
+    public boolean isPalindrome(String s) {
+        int start=0;
+        int end=s.length() -1 ;
+        while (start<end){
+            while(start < end && !Character.isLetterOrDigit(s.charAt(start))){
+                start++;
+            }
+             while(start < end && !Character.isLetterOrDigit(s.charAt(end))){
+                end--;
+            }
+
+            if (Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end))){
+                
+                return false;
+            }
+            start++;
+            end--;
+
+            }
+            return true;
+        }
+        
+    }
+----------------------------------------------------------------------
+
+lc - 796 
+class Solution {
+    public boolean rotateString(String s, String goal) {if(s.length() != goal.length()){
+        return false;
+    }
+        String doubleS = s+s;
+        return doubleS.contains(goal);
+        
+    }
+}
+
+
+
