@@ -5,19 +5,68 @@ class Main {
         if (n==0) return 0;
         if (n<0) return -1;
         //logic 
-        int resa = maxCuts(n-a , a,b c);
-        int resb= maxCuts(n-b , a,b c);
-        int resc = maxCuts(n-c , a,b c);
-        int result = math.max(resa(math.max(resb,resc)));
+        int resa = maxCuts(n-a , a,b ,c);
+        int resb= maxCuts(n-b , a,b, c);
+        int resc = maxCuts(n-c , a,b, c);
+        int result = Math.max(resa,Math.max(resb,resc));
         if (result == -1 ) return -1 ;
-        return result +1;
-        
-    public static void main(string[] args){
-        int N =17;
-        int a =10;
-        int b =11
+        return result +1; // for the last cut
+    }
+    public static void main(String[] args){
+        int N =13;
+        int a =5;
+        int b =2;
         int c = 3;
         
         int ans = maxCuts(N,a,b,c);
-        system.out.println(ans);
+        System.out.println(ans);
         
+        
+        System.out.println("Try programiz.pro");
+    }
+}
+------------------------------------------------
+
+
+lc 322
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+
+        if (amount == 0) return 0;   // base case
+        if (amount < 0) return -1;   // invalid case
+
+        int mini = Integer.MAX_VALUE;
+
+        for (int coin : coins) {
+            int res = coinChange(coins, amount - coin);
+
+            if (res != -1 && res + 1 < mini) {
+                mini = res + 1;
+            }
+        }
+
+        return (mini == Integer.MAX_VALUE) ? -1 : mini;
+    }
+}
+------------------
+
+lc 279
+
+class Solution {
+    private int minSquare(int n){
+        if(n==0) return 0;
+        int minCount = Integer.MAX_VALUE;
+        for (int i =1; i*i <= n ; i ++){
+            minCount= Math.min(minCount ,1+ minSquare(n-i*i));}
+            return minCount;
+
+        }
+    }
+    public int numSquares(int n) {
+        return minSquare(n);
+        
+    }
+}
+-------------
+lc 78
+
